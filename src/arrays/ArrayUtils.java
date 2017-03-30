@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public   final class ArrayUtils {
 	
+	
 	public static  int getMin(int []arr){
 		int min =arr[0];
 		for(int i=0;i<arr.length;i++){
@@ -22,6 +23,10 @@ public   final class ArrayUtils {
 			}
 		}
 		return max;
+	}
+	
+	public static int[] copy(int[]arr){
+		return Arrays.copyOf(arr, arr.length);
 	}
 	
 	public static  void print(int []arr){
