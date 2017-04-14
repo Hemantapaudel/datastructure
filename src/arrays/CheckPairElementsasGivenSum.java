@@ -1,6 +1,8 @@
 package arrays;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 
@@ -36,11 +38,30 @@ public class CheckPairElementsasGivenSum {
 			System.out.println("There is no pair element which having sum "+sum);
 		}
 	}
-
+	
+	// using Set in java
+	
+	public static void printPairUsingSet(int []arr,int sum){
+		Set<Integer> s = new HashSet<Integer>();
+		for(int a : arr){
+			s.add(a);
+		}
+		for(int a : arr){
+			int x = sum -a;
+			if(s.contains(x)){
+				System.out.println("found pair a= "+a +"&  x= "+x);
+				s.remove(a);
+			}
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		int[] arr = { 12, 5, 25, 35, 7, 8, 10 };
 		printPairElementsHavingGivenSum(arr,60);
 		printPairElementsHavingGivenSum(arr,21);
+		
+		printPairUsingSet(arr,60);
 	}
 
 }
