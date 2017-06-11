@@ -16,6 +16,7 @@ public class BinaryTree {
 	}
 
 	public BinaryTree(Node node) {
+		
 		this.root= node;
 	}
 	

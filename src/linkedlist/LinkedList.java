@@ -43,14 +43,64 @@ public class LinkedList {
 
 	public void addAllNode(Node... nodes) {
 		for (Node node : nodes) {
-			addNode(node);
+			AddAtFirst(node);
 		}
+	}
+	
+	public void AddAtFirst(Node node){
+		node.next = head;
+		head = node;
+	}
+
+	public void AddBeforGivenNode(Node givenNode, Node newNode){
+		if(givenNode == null || head == null){
+			System.out.println("The given previous node cannot be null");
+	        return;
+		}
+		if(givenNode == head){
+			 AddAtFirst(newNode);
+			 return; 
+		}
+		Node previous = head;
+		Node temp = previous.next;
+		while(temp != null && temp.getData() != givenNode.data){
+			previous = temp;
+			temp = temp.next;
+		}
+		if(temp == null){
+			return;
+		}
+		newNode.next= previous.next;
+		previous.next = newNode;
+	}
+	
+	public void AddAfterGivenNode(Node givenNode, Node newNode){	
+		if(givenNode == null || head == null){
+			System.out.println("The given previous node cannot be null");
+	        return;
+		}
+		newNode.next = givenNode.next;
+		givenNode.next = newNode;
+	}
+	
+	public void AddAtLast(Node node){
+		if(head == null){
+			head = node;
+			return;
+		}
+		Node temp = head;
+		while(temp.next != null){
+			temp = temp.next;
+		}
+		node.next = null;
+		temp.next= node;
 	}
 
 	
-
+	
 	public void traversalList() {
 		if (this.head == null) {
+			System.out.println("List is empty");
 			return;
 		}
 		Node temp = head;
@@ -58,8 +108,56 @@ public class LinkedList {
 			System.out.print(temp.getData() + " , ");
 			temp = temp.getNext();
 		}
+		System.out.println();
 	}
-
+	
+	
+	public void swapNodes(int x ,int y){
+		
+		// Nothing to do if x and y are same
+        if (x == y) return;
+		
+     // Search for x (keep track of prevX and CurrX)
+        Node prevX = null, currX = head;
+        while (currX != null && currX.data != x)
+        {
+            prevX = currX;
+            currX = currX.next;
+        }
+        
+        // Search for y (keep track of prevY and currY)
+        Node prevY = null, currY = head;
+        while (currY != null && currY.data != y)
+        {
+            prevY = currY;
+            currY = currY.next;
+        }
+ 
+        // If either x or y is not present, nothing to do
+        if (currX == null || currY == null)
+            return;
+        
+        // If x is not head of linked list
+        if (prevX != null)
+            prevX.next = currY;
+        else //make y the new head
+            head = currY;
+ 
+        // If y is not head of linked list
+        if (prevY != null)
+            prevY.next = currX;
+        else // make x the new head
+            head = currX;
+        
+     // Swap next pointers
+        Node temp = currX.next;
+        currX.next = currY.next;
+        currY.next = temp;
+        
+		
+		
+	}
+	
 	
 	public static void traversalList(Node node) {
 		if (node == null) {
@@ -87,10 +185,13 @@ public class LinkedList {
 		System.out.print(head.getData() + " , ");
 		recursiveTraversalList(head.getNext());
 	}
-
+   
+	/**
+	 * calculating length using iterative way
+	 */
 	public int getLength() {
 		int length = 0;
-		Node temp =this. head;
+		Node temp = this.head;
 		while (temp != null) {
 			length++;
 			temp = temp.getNext();
@@ -98,6 +199,18 @@ public class LinkedList {
 		return length;
 	}
 
+	/**
+	 * calculating length recursive way
+	 * 
+	 **/
+	public int getLengthRecursive(Node node) {
+
+		if(node == null){
+			return 0;
+		}       
+		return 1+ getLengthRecursive(node.next);
+	}
+	
 	public int getNthNode( int k) {
 		int count = 0;
 		Node temp = this.getHead();
@@ -154,9 +267,56 @@ public class LinkedList {
 	}
 	
 	
+	public void deleteNodeAtGivenPosition(int position){
+		
+		if(head == null)
+			return;
+		if(position ==0){
+			head = head.next;
+			return;
+		}
+		Node temp = head ;
+		for(int i= 1; (temp != null && i< position); i++ ){
+		 temp = temp.next;	
+		}
+		// delete next node
+		
+		if(temp == null || temp.next == null){
+			return;
+		}
+		// delete temp.next node
+		temp.next = temp.next.next;
+		traversalList();
+	}
+	
+
+	/**
+	 * Delete the first node of given list
+	 */
+	public void deleteFirstNode() {
+		if(head == null){
+			System.out.println("list is empty");
+			return;
+		}		
+		head = head.next;
+		traversalList();
+	}
+	
 	public void deleteNode( Node node) {
+		
+		if(head == null){
+			System.out.println("list is empty");
+			return;
+		}
+		
 		Node temp = this.head;		
 		Node previousNode = null;
+		
+		// if deleting key is head itself
+		if(temp.data == node.data){
+			head = head.next;
+		}
+		// find the given key and maintain previous node reference
 		while (temp != null && temp.getData() != node.getData()) {
 			previousNode = temp;
 			temp = temp.getNext();
@@ -165,6 +325,7 @@ public class LinkedList {
 			System.out.println("Given key:" + node.getData()	+ " is not present in linked list ");
 			return;
 		}
+		// delete current temp node
 		previousNode.setNext( temp.getNext());
 		System.out.println("\n===after delete element "+node.getData() + " from list :");
 		traversalList();
@@ -248,7 +409,7 @@ public class LinkedList {
 		Node nextNode;
 		while (currentNode != null) {
 			nextNode = currentNode.getNext();
-			currentNode.setNext(prev);  ;
+			currentNode.next = prev;
 			prev = currentNode;
 			currentNode = nextNode;
 		}
@@ -256,6 +417,53 @@ public class LinkedList {
 		System.out.println("\n after reverse linked list:: ");
 		traversalList();
 	}
+	
+	public Node reverseLinkedList(Node head, int k) {
+		Node prev = null;
+		Node currentNode =head;
+		Node nextNode = null;
+		int count = 0;
+		while (count < k && currentNode != null) {
+			nextNode = currentNode.getNext();
+			currentNode.next = prev;
+			prev = currentNode;
+			currentNode = nextNode;
+			count++;
+		}
+		if(nextNode != null){
+			//System.out.println(head.data);
+			head.next = reverseLinkedList(nextNode, k);
+		}
+		
+		//System.out.println("\n after reverse linked list:: ");
+		//traversalList(head);
+		return prev;
+	}
+	
+	
+	public void reverseLinkedListRecursive(){
+		reverseLinkedListRecursive(null,head);
+		System.out.println("\n after reverse linked list:: ");
+		traversalList();
+	}
+	// initially previous will be null and current will be HEAD
+	private void reverseLinkedListRecursive(Node previousNode, Node currentNode){
+		
+		// tail node check
+		if(currentNode.next == null){
+			head = currentNode;
+			currentNode.next = previousNode;
+			return ;
+		}
+		// Divide List into two part
+		Node secondList = currentNode.next;
+		currentNode.next = previousNode;
+		
+		reverseLinkedListRecursive(currentNode,secondList);
+		
+		
+	}
+	
 	
 	
 
@@ -569,48 +777,9 @@ public class LinkedList {
 		}
 		return isLoopFound;
 	}
-
-//	---------------------------------------------------------------------------------
-//	MergeSort(headRef)
-//	1) If head is NULL or there is only one element in the Linked List 
-//	then return.
-//	2) Else divide the linked list into two halves.  
-//	using slow and fast pointer. 
-//	3) Sort the two halves a and b.
-//	MergeSort(a);
-//	MergeSort(b);
-//	4) Merge the sorted a and b (using SortedMerge() ) 
-//	and update the head pointer using headRef.
-//	this.head = sortedMerge(a, b);
-//	------------------------------------------------------------------------------------
-//	
-	
-	public void mergeSort(Node headRef) {
-		if (headRef == null || headRef.getNext() == null) {
-			return;
-		}
-		Node a, b;
-		Node temp_slow = headRef;
-		Node temp_fast = headRef.getNext();
-		while (temp_fast != null) {
-			temp_fast = temp_fast.getNext();
-			if (temp_fast != null) {
-				temp_slow = temp_slow.getNext();
-				temp_fast = temp_fast.getNext();
-			}
-		}
-		a = headRef;
-		b = temp_slow.getNext();
-		temp_slow.setNext(null);
-		mergeSort(a);
-		mergeSort(b);
-		// merging the sorted list into one.
-		this.head = sortedMerge(a, b);
-
-	}
-
 	/**
-	 * 
+	 *  Recursive sorted merge 
+	 *  
 	 * @param a
 	 * @param b
 	 * @return
@@ -635,6 +804,7 @@ public class LinkedList {
 		return result;
 	}
 
+	
 
 	public void deleteList() {
 		Node current = this.head;
@@ -647,20 +817,6 @@ public class LinkedList {
 		this.head =null;
 	}
 	
-	
-	
-	
-	/**
-	 *  Recursive function on linked list
-	 */
-	public int getLengthRecusive(Node node) {
-		if(node ==null){
-			return 0;
-		}
-		return 1+getLengthRecusive(node.getNext());
-	}
-	
-	
 	public boolean searchDateOnListRecursive(Node node, int data) {
 		if(node==null){
 			return false;
@@ -669,5 +825,35 @@ public class LinkedList {
 			return true;
 		}
 		return searchDateOnListRecursive(node.getNext(),data);
+	}
+
+	public void rotateByK(int k) {
+
+		if(k == 0)
+			return ;
+		
+		Node current = this.head;
+		int count =1;
+		while(count < k && current != null){
+			current =current.next;
+			count ++;
+		}
+		//System.out.println(" count "+ count);
+		//System.out.println(" current "+ current.data);
+		if(current == null){
+			return;
+		}
+		// store kthNode to make last node.
+		Node kthNode = current;
+		while(current.next != null){
+			current = current.next;
+		}
+		// now current is last node;
+		// add next node as first node
+		current.next = head;
+		head = kthNode.next;
+		kthNode.next = null;
+		System.out.println("After rorated by k , list is: ");
+		this.traversalList();
 	}
 }
