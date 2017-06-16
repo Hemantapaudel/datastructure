@@ -1,10 +1,9 @@
-package linkedlist;
+package circularlist;
 
-/**
- * In singly linked list, the next pointer of the last node points to the first node which is called as Circular linked list
- * 
- */
+import linkedlist.Node;
+
 public class CircularList {
+
 
 	private Node head;
 
@@ -23,7 +22,7 @@ public class CircularList {
 		while (temp.getNext() != head) {
 			temp = temp.getNext();
 		}
-		temp.setNext( node);
+		temp.setNext(node);
 		node.setNext(head);
 	}
 
@@ -68,5 +67,6 @@ public class CircularList {
 		}
 		System.out.println();
 	}
+
 
 }

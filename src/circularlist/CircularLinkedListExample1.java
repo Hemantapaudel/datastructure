@@ -1,12 +1,12 @@
-package linkedlist;
+package circularlist;
 
+import linkedlist.Node;
 
-public class CircularListDemo {
-
+public class CircularLinkedListExample1 {
 	public static void main(String[] args) {
+
 		CircularList circularList = new CircularList();
-		
-		
+	
 		Node n1 = new Node(10);
 		Node n2 = new Node(20);
 		Node n3 = new Node(30);
@@ -15,7 +15,7 @@ public class CircularListDemo {
 		circularList.addAllNode(n1,n2,n3,n4);
 		circularList.traversCircularList();
 	    circularList.spiteCircularListToLinearList();
-
+		
+		
 	}
-
 }
