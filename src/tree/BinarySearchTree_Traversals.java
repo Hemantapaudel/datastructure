@@ -1,6 +1,11 @@
 package tree;
 
-public class BinaryTreeExample1 {
+/**
+ * 
+ * in this example we are create a tree and traversal in different order
+ */
+public class BinarySearchTree_Traversals {
+	
 	
 	public static void main(String[] args) {
 	BinarySearchTree bst = new BinarySearchTree(new Node(30));
@@ -21,7 +26,7 @@ public class BinaryTreeExample1 {
     System.out.println("\n DFS traversal ");
     bst.DFS();
     
-    System.out.println("max element form Binary search tree: "+ bst.maxElementInBSTTree());
+    /*System.out.println("max element form Binary search tree: "+ bst.maxElementInBSTTree());
     System.out.println("max element using BFS traversal: "+ bst.findMaxUsingBFS());
     System.out.println("max element using BFS traversal: "+ bst.serchingUsingBFS(45));
     
@@ -34,7 +39,7 @@ public class BinaryTreeExample1 {
 	bst.printVerticalOrder();
 	bst.maxSumOfLevel();
     
-    
+    */
     
     
 	}

@@ -31,8 +31,12 @@ public class BinarySearchTree {
 	 * smaller and right node should have equal or greater than root value.
 	 */
 	public static void addNode(Node root, Node node) {
-		if (node == null || root == null) {
+		if (node == null) {
 			return;
+		}
+		if(root == null){
+			root = node;
+		   return;
 		}
 		if (root.getData() > node.getData()) {
 			addNodeOnLeft(root, node);
@@ -70,7 +74,7 @@ public class BinarySearchTree {
 	}
 	private void preOrderTraversal(Node currentNode){
 		if(currentNode != null){
-			System.out.print("  "+currentNode.getData());
+			System.out.print("  "+ currentNode.getData());
 			preOrderTraversal(currentNode.getLeft());
 			preOrderTraversal(currentNode.getRight());
 		}
@@ -442,8 +446,12 @@ public class BinarySearchTree {
 		if (N == 1) {
 			System.out.println(root.getData());
 		} else {
-			printNthLevelNodes(root.getLeft(), N - 1);
-			printNthLevelNodes(root.getRight(), N - 1);
+			if(root.getLeft() != null){
+				printNthLevelNodes(root.getLeft(), N - 1);
+			}
+			if(root.getRight() != null){
+				printNthLevelNodes(root.getRight(), N - 1);
+			}
 		}
 	}
 
@@ -467,11 +475,18 @@ public class BinarySearchTree {
 		} else {
 			int lheight = getHeight(root.getLeft());
 			int rHeight = getHeight(root.getRight());
-
+			
 			int ldiameter = diameterOfBinaryTree(root.getLeft());
 			int rdiameter = diameterOfBinaryTree(root.getRight());
 
-			return (Math.max(lheight + rHeight + 1, Math.max(ldiameter, rdiameter)));
+			//calculate diameter at current node using height
+			int currentNodeDiameter = lheight + rHeight + 1;
+			
+			// max diameter of subtree left and right
+			 int maxDiameterOfSubTree = Math.max(ldiameter, rdiameter);
+			
+			
+			return Math.max(currentNodeDiameter, maxDiameterOfSubTree);
 		}
 	}
 

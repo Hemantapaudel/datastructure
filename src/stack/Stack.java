@@ -1,7 +1,7 @@
 package stack;
 
 public class Stack {
-	private static final int MAX = 1000;
+	protected static final int MAX = 1000;
 	private int top;
 	private int a[] = new int[MAX]; // Maximum size of Stack
 
@@ -9,8 +9,16 @@ public class Stack {
 		return (top < 0);
 	}
 
+	public Stack(int size) {
+		a = new int[size];
+		top = -1;
+	}
 	public Stack() {
 		top = -1;
+	}
+	
+	public int top(){
+		return top;
 	}
 
 	public boolean push(int x) {
