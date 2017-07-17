@@ -33,4 +33,30 @@ public   final class ArrayUtils {
 		System.out.println(Arrays.toString(arr));
 	}
 
+	public static void print(int []arr, int lowerIndex, int higherIndex){
+		
+		 StringBuilder b = new StringBuilder();
+	        b.append('[');
+	        for (int i = lowerIndex; i<=higherIndex ;i++) {
+	            b.append(arr[i]);
+	            if (i == higherIndex)
+	                 b.append(']');
+	            b.append(", ");
+	        }
+	        System.out.println(b.toString());
+	}
+	
+	public static void print(int []arr, int... indexs){
+		 StringBuilder b = new StringBuilder();
+		 b.append('[');
+		 for(int index : indexs){
+			 b.append(arr[index]+",");
+		 }
+		 b.deleteCharAt(b.length()-1);
+		 System.out.println(b.append(']').toString());
+	}
+	
+	
+	
+	
 }

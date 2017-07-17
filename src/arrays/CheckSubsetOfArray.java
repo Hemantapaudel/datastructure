@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CheckSunsetOfArray {
+public class CheckSubsetOfArray {
 	public static void main(String[] args) {
 		int[] arr1 = { 45, 85, 96, 58, 69, 56, 24 };
 		int[] arr2 = { 45, 96, 56, 85, 4 };
@@ -29,9 +29,11 @@ public class CheckSunsetOfArray {
 		if (arr1.length < arr2.length) {
 			return Boolean.FALSE;
 		}
+		//big array
 		for (int a : arr1) {
 			ls.put(a, "A");
 		}
+		//small array
 		for (int a : arr2) {
 			if (ls.get(a) == null) {
 				return Boolean.FALSE;
@@ -53,6 +55,7 @@ public class CheckSunsetOfArray {
 		}
 		Arrays.sort(arr1);
 		Arrays.sort(arr2);
+		
 		int n = arr2.length;
 		int m = arr1.length;
 		while (i < n && j < m) {
@@ -64,12 +67,12 @@ public class CheckSunsetOfArray {
 			} else if (arr1[j] > arr2[i])
 				return Boolean.FALSE;
 		}
+		//smaller array is not completely iterate on while loop
 		if (i < n){
 			System.out.println("==========");
 			return Boolean.FALSE;
 		}
-		else
-			return Boolean.TRUE;
+		return Boolean.TRUE;
 	} 
 	
 }

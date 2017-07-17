@@ -15,9 +15,32 @@ import java.util.Set;
  * r. (a) If (A[l] + A[r] == sum) then return 1 (b) Else if( A[l] + A[r] < sum )
  * then l++ (c) Else r-- 4) No candidates in whole array - return 0
  */
-public class CheckPairElementsasGivenSum {
+public class PairElementsasGivenSum {
 	
-	public static void printPairElementsHavingGivenSum(int[] arr, int sum) {
+	/**
+	 * Method 1 : take one element and take the each other element and check the sum , it will take O(N^2)
+	 *  
+	 */
+	public static void printPairElement(int []arr, int sum){
+		System.out.println("Using Iterative way ");
+		for(int i=0; i< arr.length-1; i++){
+			for(int j=i; j< arr.length; j++){
+				if(arr[i]+ arr[j] == sum){
+					System.out.println("Pait element are : "+ arr[i]+" and "+arr[j]);
+				}
+			}			
+		}
+	}
+	
+	
+	
+	
+	/**
+	 * Method1 : we are sorting the given array, it will take O(N log N)
+	 * 
+	 */
+	public static void printPairElementsUsingSorting(int[] arr, int sum) {
+		System.out.println("Using sorting ");
 		Arrays.sort(arr);
 		boolean isPairFound=false;
 		int left = 0;
@@ -27,7 +50,8 @@ public class CheckPairElementsasGivenSum {
 				System.out.println("sum of the pair::a[left]=" + arr[left]+ " a[right] =" + arr[right]);
 				right = right - 1;
 				left = left + 1;
-				isPairFound= Boolean.TRUE;
+				isPairFound = Boolean.TRUE;
+				
 			} else if ((arr[left] + arr[right]) > sum) {
 				right = right - 1;
 			} else {
@@ -39,9 +63,12 @@ public class CheckPairElementsasGivenSum {
 		}
 	}
 	
-	// using Set in java
-	
+	/**
+	 * Best solution, if space is not constraints 
+	 *  using set, it take O(N) 
+	 */
 	public static void printPairUsingSet(int []arr,int sum){
+		System.out.println("Using Hashing way");
 		Set<Integer> s = new HashSet<Integer>();
 		for(int a : arr){
 			s.add(a);
@@ -57,10 +84,10 @@ public class CheckPairElementsasGivenSum {
 	
 	
 	public static void main(String[] args) {
+		System.out.println("");
 		int[] arr = { 12, 5, 25, 35, 7, 8, 10 };
-		printPairElementsHavingGivenSum(arr,60);
-		printPairElementsHavingGivenSum(arr,21);
-		
+		printPairElement(arr,60);
+		printPairElementsUsingSorting(arr,60);
 		printPairUsingSet(arr,60);
 	}
 

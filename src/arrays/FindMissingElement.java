@@ -41,10 +41,10 @@ public class FindMissingElement {
 			x = x ^ A[i];
 		}
 		// 2. take the XOR of 1 to n and then assigned to Y
-		for (int i = 1; i <= 9; i++) {
+		for (int i = 1; i <= A.length + 1 ; i++) {
 			y = y ^ i;
 		}
-		System.out.println("Missig Elements::" + (y ^ x));
+		System.out.println("Using XOR - Missig Elements::" + (y ^ x));
 	}
 
 	private static void printMissingNumber(int[] A) {

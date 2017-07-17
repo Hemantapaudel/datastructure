@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * Algorithm 
 1) Sort all the elements of the input array.
+
 2) Use two index variables l and r to traverse from left and right ends respectively. Initialize l as 0 and r as n-1.
 3) sum = a[l] + a[r]
 4) If sum is -ve, then l++

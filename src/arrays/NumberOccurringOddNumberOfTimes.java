@@ -13,7 +13,7 @@ import java.util.Iterator;
  * time & constant space.
  *
  */
-public class FindNumberOccurringOddNumberOfTimes {
+public class NumberOccurringOddNumberOfTimes {
 
 	public static void main(String[] args) {
 
@@ -30,7 +30,7 @@ public class FindNumberOccurringOddNumberOfTimes {
 	 * 
 	 * A Simple Solution is to run two nested loops. The outer loop picks all
 	 * elements one by one and inner loop counts number of occurrences of the
-	 * element picked by outer loop. Time complexity of this solution is O(n2).
+	 * element picked by outer loop. Time complexity of this solution is O(N^2).
 	 */
 	public static void printOddOccurrence(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {

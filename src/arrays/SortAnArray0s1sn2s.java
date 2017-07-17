@@ -11,6 +11,7 @@ package arrays;
 
 public class SortAnArray0s1sn2s {
 
+	//using count concept 
 	public static void sortAnArray0s1sn2s(int arr[]) {
 		int size = arr.length;
 		int zerosCount = 0;
@@ -40,13 +41,43 @@ public class SortAnArray0s1sn2s {
 			arr[index] = 2;
 			index++;
 		}
-		for (int a : arr) {
-			System.out.print(" " + a);
-		}
+		ArrayUtils.print(arr);	
 	}
 
+	// moving zeros to lower side and 2s into higher side
+	
+	private static void sort012(int []arr){
+		int lower =0;
+		int high = arr.length-1;
+		int currentElement;
+		for(int i=0; i<= high; i++){
+			System.out.println("lower = "+lower +" current i = "+i + " higher index = "+ high);
+			ArrayUtils.print(arr);
+			if(arr[i] ==0){
+				// move element into lower index i.e. exchange with current and lower
+				currentElement = arr[i];
+				arr[i] = arr[lower];
+				arr[lower] = currentElement;
+				lower++;
+			}else if(arr[i] == 1){
+				continue;
+			}else{
+				// this is two element
+				currentElement = arr[i];
+				arr[i] = arr[high];
+				arr[high]= currentElement;
+				high--;
+				i--;//processing same element again
+			}
+			ArrayUtils.print(arr);	
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		int arr[] = { 0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1 };
+
+		SortAnArray0s1sn2s.sort012(arr);
 		SortAnArray0s1sn2s.sortAnArray0s1sn2s(arr);
 	}
 

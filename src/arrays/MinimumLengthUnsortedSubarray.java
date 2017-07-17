@@ -1,12 +1,10 @@
 package arrays;
 
-import java.util.Arrays;
-
 public class MinimumLengthUnsortedSubarray {
 
 	public static void main(String[] args) {
 
-		int[] arr = { 10, 20, 30, 25, 35, 40, 32, 45, 50, 60 };
+		int[] arr = {10, 12, 20, 30, 25, 40, 32, 31, 35, 50, 60};
 		int left = 0;
 		int right = arr.length - 1;
 
@@ -27,8 +25,8 @@ public class MinimumLengthUnsortedSubarray {
 		}
 		System.out.println(right);
 
-		int lowerIndex = left + 1;
-		int upperIndex = right - 1;
+		int lowerIndex = left;
+		int upperIndex = right;
 
 		int min = Integer.MAX_VALUE;
 		int max = Integer.MIN_VALUE;
@@ -41,33 +39,25 @@ public class MinimumLengthUnsortedSubarray {
 				max = arr[i];
 			}
 		}
-		System.out.println("Min in subarray::" + min + " Max in Sub array::"
-				+ max);
+		System.out.println("Min in subarray::" + min + " Max in Sub array::"+ max);
 
-		if (arr[lowerIndex - 1] > min) {
-			while (lowerIndex >= 0) {
-				lowerIndex = lowerIndex - 1;
-				if (arr[lowerIndex - 1] < min) {
-					break;
-				}
-			}
+		//finding lower index
+		int firstArrayUpperBound = left-1;
+		while(firstArrayUpperBound >=0 && arr[firstArrayUpperBound] > min){
+			firstArrayUpperBound = firstArrayUpperBound-1;
 		}
-
-		if (arr[right] < max) {
-			while (right < arr.length) {
-				if (arr[right + 1] > max) {
-					break;
-				}
-				right = right + 1;
-			}
+		left = firstArrayUpperBound+1;
+		
+		int secondArrayLowerBound = right+1;
+		while(secondArrayLowerBound <= arr.length && arr[secondArrayLowerBound] < max){
+			secondArrayLowerBound = secondArrayLowerBound+1;	
 		}
-
-		System.out.println("Sub array is  lowerIndex=:" + lowerIndex
-				+ "  right = " + right);
-		System.out.println(Arrays.toString(arr));
-		for (int i = left; i <= right; i++)
-			System.out.print("  " + arr[i]);
-
+		right = secondArrayLowerBound -1;
+		
+		System.out.println("Sub array is  lowerIndex=:" + left + "  right = " + right);
+		ArrayUtils.print(arr);
+		ArrayUtils.print(arr, left, right);
+		
 	}
 
 }

@@ -4,7 +4,7 @@ package tree;
  * 
  * in this example we are create a tree and traversal in different order
  */
-public class BinarySearchTree_Traversals {
+public class BinarySearchTree1_Traversals {
 	
 	
 	public static void main(String[] args) {

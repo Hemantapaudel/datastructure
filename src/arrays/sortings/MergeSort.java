@@ -9,16 +9,16 @@ public class MergeSort {
 		}
 		// divide the array into two arrays
 		int mid = n / 2;
-		System.out.println("mid ==" + mid);
+		//System.out.println("mid ==" + mid);
 		int[] left = new int[mid];
 		int[] right = new int[n - mid];
 		for (int i = 0; i < mid; i++) {
-			System.out.println(arr[i]);
+			//System.out.println(arr[i]);
 			left[i] = arr[i];
 		}
-		System.out.println("---------------");
+		//System.out.println("---------------");
 		for (int i = mid; i < n; i++) {
-			System.out.println(arr[i]);
+			//System.out.println(arr[i]);
 			right[i - mid] = arr[i];
 		}
 		// dividing the array recursively

@@ -2,7 +2,7 @@ package tree;
 
 //The diameter of a tree (sometimes called the width) is the number of nodes on the longest 
 //path between two leaves in the tree
-public class BinarySerachTree3_DiameterExample {
+public class BinarySearchTree3_DiameterExample {
 	
 	public static void main(String[] args) {
 		

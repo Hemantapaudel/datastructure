@@ -18,12 +18,10 @@ public class FindMinInLogN {
 
 		else
 			return second;
-
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new FindMinInLogN().getMin(new int[] { 2, 4, 6, 7,
-				10, 11, 13 }, 0, 6));
+		System.out.println(new FindMinInLogN().getMin(new int[] { 2, 4, 6, 7,10, 11, 13 }, 0, 6));
 
 	}
 
