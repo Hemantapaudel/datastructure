@@ -1,10 +1,10 @@
-package arrays;
+package arrays.rotation;
 
 import java.util.Arrays;
 
 public class RotateArrayByD {
 
-	// using temporary array size d
+	//Method1:  using temporary array size d
 	public static void rotateArryInLeft(int arr[], int d) {
 		//copy first d elements in temporary array.
 		int[] temp = new int[d];
@@ -20,7 +20,7 @@ public class RotateArrayByD {
 			arr[index] = temp[i];	
 		}
 	}
-	
+	//Method 2 : one by one element
 	public static void RotateOneByOne(int[] arr, int d) {
 		int lastIndex = arr.length-1;
 		for (int i = 0; i < d; i++) {	
@@ -32,6 +32,7 @@ public class RotateArrayByD {
 		}
 	}
 
+	//Method 3 : reversal algorithms
 	public static void RotateByReversalAlgorithm(int arr[], int d) {
 		// reverse first d elements
 		reverseArray(arr, 0, d - 1);

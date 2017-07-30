@@ -1,7 +1,8 @@
 package linkedlist;
 
+
 //Linked List | Set 3 (Deleting a node)
-public class LinkedListExample2 {
+public class DeleteNodeOnLinkedList {
 
 	public static void main(String[] args) {
 		
@@ -21,7 +22,23 @@ public class LinkedListExample2 {
 		System.out.println();
 		list.deleteFirstNode();
 		
+		// delete node without traversal
+		
+		
 		
 		
 	}
+	
+	public static boolean deleteNodeWithOutTraversal(Node node){
+		// check for NUll or last node
+		if(node == null || node.next == null){
+			//this is invalid condition
+			return Boolean.FALSE;
+		}
+		Node temp = node.next;
+		node.data = temp.data;
+		node.next = temp.next;
+		temp.next = null;
+		return Boolean.TRUE;
+	}	
 }

@@ -11,7 +11,7 @@ package linkedlist;
  * 2. Reverse the linked list 
  *
  */
-public class LinkedListExample4 {
+public class SwapNodesInLinkedlistWithoutSwappingData {
 	public static void main(String[] args) {		
 		int []numbers = {5,10,15,20,25,30,35,40,45,50};
 		LinkedList list = LinkedListUtils.creatList(numbers);

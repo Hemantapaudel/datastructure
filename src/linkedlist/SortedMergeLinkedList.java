@@ -7,7 +7,7 @@ package linkedlist;
  * Q2. Merge Sort for Linked Lists
  *
  */
-public class LinkedListExample5 {
+public class SortedMergeLinkedList {
 
 	public static void main(String[] args) {
 		LinkedList listA = LinkedListUtils.creatList(new int[]{5,10,15,20,25,30,35,40,45,50});

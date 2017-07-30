@@ -1,7 +1,7 @@
 package linkedlist;
 
 // how to insert Node on list 
-public class LinkedListExample1 {
+public class InsertNodeOnLinkedList {
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
 		Node node1 = new Node(10);

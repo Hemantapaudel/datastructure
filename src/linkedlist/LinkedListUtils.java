@@ -31,7 +31,6 @@ public class LinkedListUtils {
 	}
 	
 
-	// recursive sortedMerge
 	public static Node sortedMergeIteratively(Node a, Node b) {
 	
 		if(a == null){

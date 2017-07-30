@@ -7,7 +7,7 @@ package linkedlist;
  * loop then returns false.
  *
  */
-public class LinkedListExample7 {
+public class DeleteAndRemoveLoopFromLinkedList {
 	public static void main(String[] args) {
 		
 		Node node1 = new Node(5);
