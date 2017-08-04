@@ -1,4 +1,4 @@
-package arrays_dynamicprograms;
+package arrays_dynamicprograms.basic;
 
 public class LongestPalindromicSubsequence {
 
