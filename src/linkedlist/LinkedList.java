@@ -522,7 +522,15 @@ public class LinkedList {
 			node.setNext(null); ;
 			return;
 		}
+		
+		if(head.data > node.data){
+			node.next = head;
+			this.head = node;
+			return;
+		}
+		
 		while (temp != null && node.getData() > temp.getData()) {
+			//System.out.println(temp.getData());
 			previousNode = temp;
 			temp = temp.getNext();
 		}

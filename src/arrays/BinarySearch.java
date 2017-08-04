@@ -1,7 +1,6 @@
 package arrays;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
 
 public class BinarySearch {
 
@@ -24,7 +23,6 @@ public class BinarySearch {
 		AtomicInteger integer = new AtomicInteger();
 		integer.getAndIncrement();
 		
-		Stream<T> sm;
 		int [] arr = {1,3,4,6,9,17,21,25,28,36,39,45};
 		System.out.println(binarySearch(arr, 0, arr.length-1, 21));
 	}

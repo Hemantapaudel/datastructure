@@ -1,4 +1,4 @@
-package arrays.dynamicprogram;
+package arrays_dynamicprograms;
 
 public class LargestSumContiguousSubarray {
 	
