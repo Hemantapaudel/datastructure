@@ -1,4 +1,4 @@
-package arrays_dynamicprograms.basic.knapsack;
+package arrays_dynamicprograms.knapsack;
 
 
 public class SubsetSumProblem {

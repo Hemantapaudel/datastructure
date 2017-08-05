@@ -1,4 +1,4 @@
-package arrays_dynamicprograms.basic.knapsack;
+package arrays_dynamicprograms.knapsack;
 
 public class  KnapsackProblemDynamic {
 	
@@ -22,8 +22,8 @@ public class  KnapsackProblemDynamic {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+		System.out.println(" ");
 	}
 
 }

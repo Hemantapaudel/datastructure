@@ -1,4 +1,4 @@
-package arrays_dynamicprograms.basic;
+package arrays_dynamicprograms.basic.longestCommonSubsequence;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

@@ -1,4 +1,4 @@
-package arrays_dynamicprograms.basic;
+package arrays_dynamicprograms.basic.longestCommonSubsequence;
 
 import arrays.ArrayUtils;
 
