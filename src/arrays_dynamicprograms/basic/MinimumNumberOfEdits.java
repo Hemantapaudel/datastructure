@@ -2,11 +2,14 @@ package arrays_dynamicprograms.basic;
 
 public class MinimumNumberOfEdits {
 
-	 static int min(int x,int y,int z)
-	    {
-	        if (x<y && x<z) return x;
-	        if (y<x && y<z) return y;
-	        else return z;
+	private static int min(int x,int y,int z){
+	        if (x<y && x<z) {
+	        	return x;
+	        }
+	        if (y<x && y<z) {
+	        	return y;
+	        }
+	         return z;	
 	    }
 	
 	public static int editDist(String str1, String str2, int firstLength, int secondLength){

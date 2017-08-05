@@ -11,6 +11,7 @@ public class MaximumLengthIncreasingSubsequence {
 	private static int getMLS(int []arr){
 		ArrayUtils.print(arr);
 		int []mls= new int[arr.length];
+		// initialize with one
 		IntStream.range(0, arr.length).forEach( index -> mls[index] =1);
 		
 		for(int i =1; i< arr.length;i++){

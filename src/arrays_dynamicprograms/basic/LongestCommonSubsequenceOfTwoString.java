@@ -18,17 +18,24 @@ public class LongestCommonSubsequenceOfTwoString {
 	
 	
 	public static int LCS_Dynamic(char[]arr1, char arr2[]){
-		
-		// first row and column are zero because there is no any subsequence for empty string 
-		
+				
 		int [][]M = new int[arr1.length+1][arr2.length+1];
 		
 		int max =0;
 		for(int i=1; i < M.length; i++){
 			for(int j=1; j < M[0].length; j++){
+				
+				// if any one string is zero length then total max subsequence will be zero
+				if (i == 0 || j == 0)
+			         M[i][j] = 0;
+				
+				// if both are match, copy diagonal value and add 1 on the same
 				if(arr1[i-1] == arr2[j-1]){
 					M[i][j] = M[i-1][j-1] + 1;
-				}else{
+				}
+				
+				// if no math is found, take max of previous row or column
+				else{
 					M[i][j]  = Math.max(M[i][j-1], M[i-1][j]);
 				}
 				if(max < M[i][j]){
