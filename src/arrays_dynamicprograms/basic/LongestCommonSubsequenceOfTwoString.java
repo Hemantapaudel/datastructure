@@ -1,4 +1,4 @@
-package arrays_dynamicprograms.basic.longestCommonSubsequence;
+package arrays_dynamicprograms.basic;
 
 
 public class LongestCommonSubsequenceOfTwoString {
