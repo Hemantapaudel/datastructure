@@ -13,7 +13,7 @@ public class MinimumNumberOfJumpsToReachEnd {
 		for (int i = 1; i < arr.length; i++) {
 			jumps[i] = Integer.MAX_VALUE - 1;
 		}
-
+		
 		for (int i = 1; i < arr.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (i <= j + arr[j]) {
