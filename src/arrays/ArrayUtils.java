@@ -54,6 +54,19 @@ public   final class ArrayUtils {
 	        System.out.println(b.toString());
 	}
 	
+	public static void print(char []arr, int lowerIndex, int higherIndex){
+		
+		 StringBuilder b = new StringBuilder();
+	        b.append('[');
+	        for (int i = lowerIndex; i<=higherIndex ;i++) {
+	            b.append(arr[i]);
+	            if (i == higherIndex)
+	                 b.append(']');
+	            b.append(", ");
+	        }
+	        System.out.println(b.toString());
+	}
+	
 	public static void print(int []arr, int... indexs){
 		 StringBuilder b = new StringBuilder();
 		 b.append('[');
