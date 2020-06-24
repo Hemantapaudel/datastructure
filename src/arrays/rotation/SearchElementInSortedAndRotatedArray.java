@@ -46,7 +46,7 @@ public class SearchElementInSortedAndRotatedArray {
 	private static int searchOnPivotedArray(int []arr, int key){
 		
 		int pivotIndex = findPivot(arr, 0, arr.length-1);
-		if(pivotIndex <0){
+		if(pivotIndex < 0){
 			// array is not rotated search on whole array
 		    return	Arrays.binarySearch(arr, key);
 		}

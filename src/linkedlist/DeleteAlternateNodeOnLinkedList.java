@@ -16,7 +16,7 @@ public class DeleteAlternateNodeOnLinkedList {
 		list.sortedInsert(list.getHead(), new Node(2));
 		list.sortedInsert(list.getHead(), new Node(22));
 		list.traversalList();
-		
+
 		Node result = deleteAlternateNode(list.getHead());
 		LinkedList.traversalList(result);
 

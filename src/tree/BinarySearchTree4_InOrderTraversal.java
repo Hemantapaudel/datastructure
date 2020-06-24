@@ -3,8 +3,9 @@ package tree;
 import java.util.Stack;
 
 public class BinarySearchTree4_InOrderTraversal {
-	
-	
+
+	// print tree in sort order traversal
+	//inorder traversal using recursive
 	public static void inOrderTraversalRecursive(Node root){
 		if(root != null){
 			inOrderTraversalRecursive(root.getLeft());
@@ -12,7 +13,9 @@ public class BinarySearchTree4_InOrderTraversal {
 			inOrderTraversalRecursive(root.getRight());
 		}
 	}
-	
+
+	// print tree in sort order traversal
+	//inorder traversal using stack
 	public static void InOrderTraversalUsingStack(Node root){
 		Stack<Node> stack = new Stack<Node>();
 		Node node = root;

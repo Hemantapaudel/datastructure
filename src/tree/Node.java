@@ -1,4 +1,5 @@
 package tree;
+
 public class Node {
 	private int data;
 	private Node left;

@@ -5,8 +5,8 @@ package stack;
  * Set 4 (Evaluation of Postfix Expression)
  * 1) Create a stack to store operands (or values).
    2) Scan the given expression and do following for every scanned element.
-		…..a) If the element is a number, push it into the stack
-		…..b) If the element is a operator, pop operands for the operator from stack. Evaluate the operator and push the result back to the stack
+		ï¿½..a) If the element is a number, push it into the stack
+		ï¿½..b) If the element is a operator, pop operands for the operator from stack. Evaluate the operator and push the result back to the stack
 	3) When the expression is ended, the number in the stack is the final answer
  */
 public class StackExample3 {
@@ -18,7 +18,7 @@ public class StackExample3 {
 		for(int i=0;i< arr.length; i++){
 			char ch = arr[i];
 			if(Character.isDigit(ch)){
-				stack.push(ch- '0');
+				stack.push(ch - '0');
 			}
 			else{
 				int val1 = stack.pop();
@@ -34,6 +34,7 @@ public class StackExample3 {
 		return stack.pop();
 	}
 	public static void main(String[] args) {
-	    System.out.println("Value of "+StackExample3.evaluatePostfix("231*+9-"));
+
+		System.out.println("Value of "+StackExample3.evaluatePostfix("231*+9-"));
 	}
 }

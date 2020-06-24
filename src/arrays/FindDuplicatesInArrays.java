@@ -62,7 +62,7 @@ public class FindDuplicatesInArrays {
 
 	public static void main(String[] args) {
 		int[] arr = { 1, 2, 3, 3, 6, 6, 4, 5 };
-		 FindDuplicatesInArrays.findDuplicatesInArrays(arr);
-		 FindDuplicatesInArrays.maxRepeating(arr, arr.length, 7);
+		 //FindDuplicatesInArrays.findDuplicatesInArrays(arr);
+		 FindDuplicatesInArrays.maxRepeating(arr, arr.length, arr.length-1);
 	}
 }

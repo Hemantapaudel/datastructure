@@ -1,11 +1,11 @@
 package stack;
 
-class SpecialStack extends Stack{
+class SpecialStack<T> extends Stack{
 
-	Stack minstack = new Stack(1000);
+	Stack<Integer> minstack = new Stack<>(1000);
 	
 	
-	public boolean push(int x) {
+	public boolean push(Integer x) {
 		if(isEmpty()){
 			super.push(x);
 			minstack.push(x);
@@ -19,9 +19,11 @@ class SpecialStack extends Stack{
 		return true;
 	}
 
-	public int pop() {
-		int x = super.pop();
-		int y = super.peek();
+
+
+	public Integer pop() {
+		Integer x = (Integer) super.pop();
+		Integer y = (Integer) minstack.peek();
 		if(x==y){
 		 minstack.pop();
 		}
@@ -37,10 +39,17 @@ public class StackExample5 {
 	public static void main(String[] args) {
 		SpecialStack specialStack = new SpecialStack();
 		specialStack.push(10);
-		specialStack.push(20);
-		specialStack.push(30);
+		specialStack.push(5);
+		specialStack.push(5);
+		specialStack.push(15);
+		specialStack.push(5);
+
 	    System.out.println("min value : "+specialStack.min());
-	    specialStack.push(5);
+	    specialStack.pop();
+		specialStack.pop();
+		specialStack.pop();
+		specialStack.pop();
+
 	    System.out.println("min value : "+specialStack.min());
 	}
 }

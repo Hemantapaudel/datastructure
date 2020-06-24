@@ -88,6 +88,7 @@ public class BinarySearchTree6_MaximumWidth {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
+
 		BinarySearchTree bst = new BinarySearchTree(new Node(30));
 		bst.addMultipleNode( new Node(10), new Node(40),
 				new Node(45), new Node(35), new Node(25), new Node(5),
@@ -95,7 +96,10 @@ public class BinarySearchTree6_MaximumWidth {
 		
 		BinarySearchTree6_MaximumWidth tree = new BinarySearchTree6_MaximumWidth();
 		System.out.println(tree.getMaxWidthUsingRecursion(bst.getRoot()));
+
 		System.out.println(tree.getMaxWidthUsingBST(bst.getRoot()));
+
+
 		System.out.println(tree.getMaxWidthUsingPreorderTraversal(bst.getRoot()));
 	}
 

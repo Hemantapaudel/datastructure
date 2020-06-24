@@ -16,7 +16,7 @@ public class InsertNodeOnLinkedList {
 		// insert after node2  
 		list.AddAfterGivenNode(node2, new Node(7));
 		// insert before node1  
-		list.AddBeforGivenNode(node1, new Node(9));
+		list.AddBeforeGivenNode(node1, new Node(9));
 		
 		
 		list.traversalList();

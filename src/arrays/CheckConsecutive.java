@@ -17,7 +17,7 @@ public class CheckConsecutive {
 		int[] arr = { 12, 5, 25, 35, 7, 8, 10 };
 		ArrayUtils.print(arr);
 		System.out.println(isArrayIsConcutive(arr));
-		System.out.println(isArrayIsConsecutiveUsingSorting(arr));
+		/*System.out.println(isArrayIsConsecutiveUsingSorting(arr));
 		System.out.println(isArrayIsConsecutiveMakingElementNegative(arr));
 		
 		System.out.println(" test case 2");
@@ -32,7 +32,7 @@ public class CheckConsecutive {
 		ArrayUtils.print(arr2);
 		System.out.println(isArrayIsConcutive(arr2));
 		System.out.println(isArrayIsConsecutiveUsingSorting(arr2));
-		System.out.println(isArrayIsConsecutiveMakingElementNegative(arr2));
+		System.out.println(isArrayIsConsecutiveMakingElementNegative(arr2));*/
 	}
 
 	
@@ -51,14 +51,14 @@ public class CheckConsecutive {
 
 		//creating visitor array  with false values
 		boolean[] visitors = new boolean[arr.length];
-		for (int i = 0; i < arr.length; i++) {
-			visitors[i] = false;
-		}
+		System.out.println(Arrays.toString(visitors));
+
 		// arr[i]- min will be alway array index
 		for (int i = 0; i < arr.length; i++) {
 			
 				int index = arr[i] - min;
-				if (visitors[index] != false) {
+				if (visitors[index] == true) {
+					// already visited index, this value is repeating
 					return false;
 				}
 				visitors[index] = true;
@@ -68,7 +68,7 @@ public class CheckConsecutive {
 
 	/**Method 2
 	 * using  sorting technique  
-	 * @param arr
+	 * @param array
 	 * @return
 	 */
 	public static boolean isArrayIsConsecutiveUsingSorting(int []array){
@@ -86,17 +86,13 @@ public class CheckConsecutive {
 	}
 	/**
 	 * Mark visited array elements as negative
+	 *
+	 * this is only work if arr[i]-min is lies within the array
 	 */
 	public static boolean isArrayIsConsecutiveMakingElementNegative(int []array){
 		int []arr = Arrays.copyOf(array, array.length);
 		int min = ArrayUtils.getMin(arr);
-		int max = ArrayUtils.getMax(arr);
-		
-		//if array is consecutive then it will be ==>> max-min +1 = Size of array
-		if (max - min + 1  != arr.length){
-			return Boolean.FALSE;
-		}
-		
+
 		for(int i=0;i<arr.length;i++){
 			//get +ve index
 			int index = Math.abs(arr[i])-min;

@@ -36,7 +36,7 @@ class StackUsingQueue{
 			System.out.println("stack underflow ");
 			return -1;
 		}
-		// copy queue1 to queue1 expect last element
+		// copy queue1 to queue2 expect last element
 		Iterator< Integer> it = queue1.iterator();
 		int data =-1;
 		while(it.hasNext()){

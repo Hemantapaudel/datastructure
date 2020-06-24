@@ -16,10 +16,21 @@ public class StackExample4 {
 			stack.push(stackData);
 		}
 	}
-	
-	public void print(){
-		while(!stack.isEmpty())
-			System.out.println(stack.pop());
+
+	public void printStack(){
+		System.out.println();
+		print();
+		System.out.println();
+	}
+
+	private void print(){
+		if(stack.isEmpty()){
+			return;
+		}
+		int data = stack.pop();
+		System.out.print(" " + data);
+		print();
+		stack.push(data);
 	}
 	
 	
@@ -41,14 +52,12 @@ public class StackExample4 {
 		stackExample4.add(50);
 		
 		
-		stackExample4.insertAtButtom(5);
-		
-		//stackExample4.print();
-		
-		
-		
+		stackExample4.insertAtButtom(0);
+		stackExample4.printStack();
+
+
 		stackExample4.reverse();
-		stackExample4.print();
+		stackExample4.printStack();
 		
 	}
 

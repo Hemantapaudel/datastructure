@@ -18,12 +18,11 @@ public class FindPairSumOnRotatedArray {
 		while (minIndex != maxIndex) {
 
 			if (arr[minIndex] + arr[maxIndex] == sum) {
-				System.out.println(" lower index " + minIndex
-						+ " higher index " + maxIndex);
+				System.out.println(" lower index " + minIndex + " higher index " + maxIndex);
 				maxIndex = (n + maxIndex - 1) % n;
 				minIndex = (minIndex + 1) % n;
 			}
-
+			//System.out.println("min index "+maxIndex +" max index = "+maxIndex);
 			if (arr[minIndex] + arr[maxIndex] > sum) {
 				maxIndex = (n + maxIndex - 1) % n;
 			} else {

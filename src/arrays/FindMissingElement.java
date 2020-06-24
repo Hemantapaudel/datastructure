@@ -81,6 +81,7 @@ public class FindMissingElement {
 	 * 
 	 */
 	public static void findMultipleMissingElementByModify(int arr[]) {
+
 		for (int i = 0; i < arr.length; i++) {
 			int index = Math.abs(arr[i]) - 1;
 			if (index < 0) {

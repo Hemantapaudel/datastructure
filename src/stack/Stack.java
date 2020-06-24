@@ -1,54 +1,59 @@
 package stack;
 
-public class Stack {
-	protected static final int MAX = 1000;
+import java.util.EmptyStackException;
+
+public class Stack<T> {
+
+	protected int size = 10 ;
+
 	private int top;
-	private int a[] = new int[MAX]; // Maximum size of Stack
+
+	private Object element[] = null;
 
 	public boolean isEmpty() {
 		return (top < 0);
 	}
 
 	public Stack(int size) {
-		a = new int[size];
+		element = new Object[size];
 		top = -1;
+		this.size= size;
 	}
 	public Stack() {
 		top = -1;
+		element = new Object[size];
 	}
 	
 	public int top(){
 		return top;
 	}
 
-	public boolean push(int x) {
-		if (top >= MAX) {
+	public boolean push(T t) {
+		if (top >= size) {
 			System.out.println("Stack Overflow");
 			return false;
 		} else {
-			a[++top] = x;
+			element[++top] = t;
 			return true;
 		}
 	}
 
-	public int pop() {
+	public T pop() {
 		if (top < 0) {
-			System.out.println("Stack Underflow");
-			return 0;
+			throw new EmptyStackException();
 		} else {
-			int x = a[top--];
-			return x;
+			T t = (T)element[top--];
+			return t;
 		}
 	}
 	
-	public int peek(){
+	public T peek(){
 	
 		if (top < 0) {
-			System.out.println("Stack Underflow");
-			return 0;
+			throw new EmptyStackException();
 		} else {
-			int x = a[top];
-			return x;
+			T t = (T)element[top];
+			return t;
 		}
 	}	
 }

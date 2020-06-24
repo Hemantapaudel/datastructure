@@ -11,6 +11,7 @@ public class ArrangeNumbersToFormBiggestNumber {
 		Comparator<Integer> comparator = (number1,number2)->{
 			String xy = number1.toString().concat(number2.toString());
 			String yx = number2.toString().concat(number1.toString());
+			//return xy.compareTo(yx);
 			return yx.compareTo(xy);
 		};
 		StringBuffer buffer = new StringBuffer();

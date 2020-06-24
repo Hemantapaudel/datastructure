@@ -28,6 +28,7 @@ public class BinarySearchTree {
 	
 	/**
 	 * this method add the Node in Tree as BST rule i.e left node should have
+	 *
 	 * smaller and right node should have equal or greater than root value.
 	 */
 	public static void addNode(Node root, Node node) {
@@ -119,16 +120,19 @@ public class BinarySearchTree {
 		
 		Queue <Node>queue = new LinkedList<Node>();
 		queue.add(this.root);
+
 		while( ! queue.isEmpty()){
 			Node visitNode = queue.poll();
-			System.out.print(" , "+visitNode.getData());
-			if(visitNode.getLeft() != null){
-				queue.add(visitNode.getLeft());
+
+				System.out.print(" , " + visitNode.getData());
+				if (visitNode.getLeft() != null) {
+					queue.add(visitNode.getLeft());
+				}
+				if (visitNode.getRight() != null) {
+					queue.add(visitNode.getRight());
+				}
 			}
-			if(visitNode.getRight() != null){
-				queue.add(visitNode.getRight());
-			}
-		}	
+
 	}
 	
 	/**
@@ -285,9 +289,9 @@ public class BinarySearchTree {
 		int maxSum = 0;
 		int maxWidth = 0;
 		
-		int currentSum = 0;
+		int currentWidthSum = 0;
 		int level = 0;
-		int count = 0;
+		int currentWidth = 0;
 		
 		Queue<Node> q = new LinkedList<Node>();
 		q.add(root);
@@ -296,29 +300,31 @@ public class BinarySearchTree {
 		while (!q.isEmpty()) {
 			Node temp = q.poll();
 			if (temp == null) {
-				level++;
-				if (maxWidth < count) {
-					maxWidth = count;
+
+				if (maxWidth < currentWidth) {
+					maxWidth = currentWidth;
 				}
-				if (currentSum > maxSum) {
-					maxSum = currentSum;
+				if (currentWidthSum > maxSum) {
+					maxSum = currentWidthSum;
 				}
+				System.out.println("level: " + level + " currentWidth = " + currentWidth + " currentWidthSum = "+currentWidthSum);
 				if (!q.isEmpty()) {
 					q.add(null);
-					System.out.println("level:" + level + "count=" + count);
-					count = 0;
-					currentSum = 0;
+					currentWidth = 0;
+					currentWidthSum = 0;
+					level++;
 				}
 			} else {
 				if (temp.getLeft() != null) {
 					q.add(temp.getLeft());
-					count++;
+
 				}
 				if (temp.getRight() != null) {
 					q.add(temp.getRight());
-					count++;
 				}
-				currentSum += temp.getData();
+				currentWidth++;
+				currentWidthSum += temp.getData();
+
 			}
 		}
 		System.out.println("Width of the Tree::" + maxWidth);
@@ -443,9 +449,10 @@ public class BinarySearchTree {
 	}
 
 	public void printNthLevelNodes(Node root, int N) {
-		if (N == 1) {
+
+		if (N == 0 ) {
 			System.out.println(root.getData());
-		} else {
+		} else if(N > 0){
 			if(root.getLeft() != null){
 				printNthLevelNodes(root.getLeft(), N - 1);
 			}
@@ -520,7 +527,7 @@ public class BinarySearchTree {
 	}
 	
 	private void storeHorizontalDistance(Node currentNode, int horizontalDistance, Map<Integer, List<Integer>> hsMap ){
-			System.out.println("---data= " + currentNode.getData() + "---hd----:" + horizontalDistance);
+			//System.out.println("---data= " + currentNode.getData() + "---hd----:" + horizontalDistance);
 			List<Integer> ls = hsMap.get(horizontalDistance);
 			if (ls == null) {
 				ls = new ArrayList<Integer>();
@@ -528,6 +535,7 @@ public class BinarySearchTree {
 			}
 			ls.add(currentNode.getData());
 	}
+
 	public void printVerticalOrder() {
 		// the horizontal distance for root element is zero
 		Integer horizontalDistance =0;
@@ -539,7 +547,7 @@ public class BinarySearchTree {
 		int min = Collections.min(set);
 		
 		for (int i= min ;i<= max;i++){
-			System.out.println(hsMap.get(i));
+			System.out.println( "Horizontal distance = "+ i + " values =  "+ hsMap.get(i));
 		}
 	}
 	

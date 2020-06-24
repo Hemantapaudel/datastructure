@@ -38,6 +38,7 @@ public class LinkedList {
 		while (temp.getNext() != null) {
 			temp = temp.getNext();
 		}
+		//temp is point to end of the Node
 		temp.setNext(node);
 	}
 
@@ -48,11 +49,11 @@ public class LinkedList {
 	}
 	
 	public void AddAtFirst(Node node){
-		node.next = head;
+		node.setNext(head);
 		head = node;
 	}
 
-	public void AddBeforGivenNode(Node givenNode, Node newNode){
+	public void AddBeforeGivenNode(Node givenNode, Node newNode){
 		if(givenNode == null || head == null){
 			System.out.println("The given previous node cannot be null");
 	        return;
@@ -160,6 +161,7 @@ public class LinkedList {
 	
 	
 	public static void traversalList(Node node) {
+		System.out.println();
 		if (node == null) {
 			return;
 		}
@@ -185,7 +187,6 @@ public class LinkedList {
 		System.out.print(head.getData() + " , ");
 		recursiveTraversalList(head.getNext());
 	}
-   
 	/**
 	 * calculating length using iterative way
 	 */
@@ -221,7 +222,7 @@ public class LinkedList {
 			}
 			temp = temp.getNext();
 		}
-		return 0;
+		return -1;
 	}
 
 	public void insertNodeatFirst(Node newNode) {
@@ -367,19 +368,21 @@ public class LinkedList {
 
 	public void getNthNodeFromEnd( int N) {
 		/**
-		 * Method 1: calculate the length (L) of the given linked list.  * calculate the position of Node which is nth from end is (L-n+1)
+		 * Method 1: calculate the length (L) of the given linked list.
+		 * * calculate the position of Node which is nth from end is L -N +1
 		 */
 		Node temp = head;
 		int L = this.getLength();
-		int givenNode = L - N + 1;
+		int givenNode = L - N +1 ;
 		// we are in first node
 		for (int count = 1; count < givenNode; count++) {
 			temp = temp.getNext();
+
 		}
 		System.out.println("Nth from Last is::" + temp.getData());
 		
 		/**
-		 * Method 2 (Use two pointers) Maintain two pointers – reference pointer
+		 * Method 2 (Use two pointers) Maintain two pointers ? reference pointer
 		 * and main pointer. Initialize both reference and main pointers to
 		 * head. First move reference pointer to N nodes from head. Now move
 		 * both pointers one by one until reference pointer reaches end. Now
@@ -417,10 +420,22 @@ public class LinkedList {
 		System.out.println("\n after reverse linked list:: ");
 		traversalList();
 	}
+
+	public void reverseLinkListWithGivenCount(int k){
+
+		Node node = reverseLinkedList(head, k);
+		head = node;
+		System.out.println("after reverse:");
+		traversalList(head);
+
+
+	}
+
+
 	
-	public Node reverseLinkedList(Node head, int k) {
+	public Node reverseLinkedList(Node startNode, int k) {
 		Node prev = null;
-		Node currentNode =head;
+		Node currentNode =startNode;
 		Node nextNode = null;
 		int count = 0;
 		while (count < k && currentNode != null) {
@@ -431,12 +446,10 @@ public class LinkedList {
 			count++;
 		}
 		if(nextNode != null){
-			//System.out.println(head.data);
-			head.next = reverseLinkedList(nextNode, k);
+			startNode.next = reverseLinkedList(nextNode, k);
 		}
 		
-		//System.out.println("\n after reverse linked list:: ");
-		//traversalList(head);
+		System.out.println("\n after reverse linked list:: ");
 		return prev;
 	}
 	
@@ -472,7 +485,7 @@ public class LinkedList {
 		 * whether Node is marked or not. if yes, that means there is a loop in
 		 * the linked link list 	 
 		
-		 * Solution 2. Floyd’s Cycle-Finding Algorithm: This is the fastest
+		 * Solution 2. Floyd?s Cycle-Finding Algorithm: This is the fastest
 		 * method. Traverse linked list using two pointers. Move one pointer by
 		 * one and other pointer by two. If these pointers meet at some node
 		 * then there is a loop
@@ -640,7 +653,7 @@ public class LinkedList {
 		second.setData( a);
 	}
 	
-	public void pairWiseSwapNodes() {
+	/*public void pairWiseSwapNodes() {
 		System.out.println(" \n Before pairWiseSwap ");
 		traversalList();
 		Node temp = head;
@@ -653,11 +666,11 @@ public class LinkedList {
 			previousNode.setNext(temp.getNext());
 			temp.setNext(temp.getNext().getNext());
 			previousNode= temp;
-			temp.getNext();	
+			temp = temp.getNext();
 		}
 		System.out.println("\n After pairWiseSwap ");
 		traversalList();
-	}
+	}*/
 	
 	
 	/**
@@ -747,7 +760,7 @@ public class LinkedList {
 
 	/**
 	 * 
-	 We know that Floyd’s Cycle detection algorithm terminates when fast and
+	 We know that Floyd?s Cycle detection algorithm terminates when fast and
 	 * slow pointers meet at a common point. We also know that this common point
 	 * is one of the loop nodes. We store the address of this in a pointer
 	 * variable say ptr2. Then we start from the head of the Linked List and
@@ -864,4 +877,22 @@ public class LinkedList {
 		System.out.println("After rorated by k , list is: ");
 		this.traversalList();
 	}
+
+	public void printNthNodeFromEndRecursively(int k) {
+		printNthNodeFromEndRecursively(head,k);
+	}
+
+	public int printNthNodeFromEndRecursively(Node node , int k){
+
+		if(node == null){
+			return 0;
+		}
+		int  number = 1 + printNthNodeFromEndRecursively(node.getNext(), k);
+		if(k ==number){
+			System.out.println(node.getData());
+		}
+		return number;
+
+	}
+
 }

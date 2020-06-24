@@ -16,7 +16,7 @@ public class CheckSubsetOfArray {
 		
 		ArrayUtils.print(arr3);
 		System.out.println(checkSubSetUsingHashMap(arr1, arr3));
-		System.out.println(isSubset(arr1, arr3));
+		System.out.println(isSubsetUsingSorting(arr1, arr3));
 	}
      /**
       * Method 1 : using hash map
@@ -24,13 +24,13 @@ public class CheckSubsetOfArray {
       * @param arr2
       * @return
       */
-	private static boolean checkSubSetUsingHashMap(int[] arr1, int[] arr2) {
+	private static boolean checkSubSetUsingHashMap(int[] largerArray, int[] arr2) {
 		Map<Integer, String> ls = new HashMap<Integer, String>();
-		if (arr1.length < arr2.length) {
+		if (largerArray.length < arr2.length) {
 			return Boolean.FALSE;
 		}
 		//big array
-		for (int a : arr1) {
+		for (int a : largerArray) {
 			ls.put(a, "A");
 		}
 		//small array
@@ -73,6 +73,40 @@ public class CheckSubsetOfArray {
 			return Boolean.FALSE;
 		}
 		return Boolean.TRUE;
-	} 
-	
+	}
+
+	public static boolean isSubsetUsingSorting(int large[], int small[]) {
+		int i = 0, j = 0;
+		if (large.length < small.length) {
+			return Boolean.FALSE;
+		}
+		Arrays.sort(large);
+		Arrays.sort(small);
+
+		int m = large.length;
+		int n = small.length;
+
+
+		while(i <m && j < n){
+			if(small[j]> large[i]){
+				i++;
+			}else if(small[j]== large[i]){
+				i++;
+				j++;
+			}else if(small[j]< large[i]){
+				return false;
+			}
+		}
+
+       if(j <n){
+       	// small array is not completed in while loop
+		   return false;
+	   }
+		return Boolean.TRUE;
+	}
+
+
+
+
+
 }
